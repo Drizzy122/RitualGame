@@ -15,6 +15,7 @@ public class PlayerMotor : MonoBehaviour
     bool crouching = false;
     float crouchTimer = 1;
     bool lerpCrouch = false;
+    public AudioSource footStepSound, SprintSound;
     [Header("Player Component")]
     private CharacterController controller;
     
@@ -74,8 +75,14 @@ public class PlayerMotor : MonoBehaviour
     {
         sprinting = !sprinting;
         if (sprinting)
+        {
             speed = 8;
+            
+        }
         else
+        {
             speed = 5;
+            
+        }
     }
 }
