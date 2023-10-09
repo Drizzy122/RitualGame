@@ -6,18 +6,24 @@ using UnityEngine.ProBuilder.Shapes;
 public class Key : MonoBehaviour
 {
     public GameObject intIcon, key;
+    private bool isInRange = false;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isInRange)
+        {
+            key.SetActive(false);
+            door.keyFound = true;
+            intIcon.SetActive(false);
+        }
+    }
 
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
         {
             intIcon.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                key.SetActive(false);
-                door.keyFound = true;
-                intIcon.SetActive(false);
-            }
+            isInRange = true;
         }
     }
     void OnTriggerExit(Collider other)
@@ -25,6 +31,7 @@ public class Key : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             intIcon.SetActive(false);
+            isInRange = false;
         }
     }
 }

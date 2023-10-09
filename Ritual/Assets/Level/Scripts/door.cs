@@ -8,25 +8,37 @@ public class door : MonoBehaviour
     public AudioSource open, close;
     public bool opened, locked;
     public static bool keyFound;
+    private bool isInRange = false;
 
     void Start()
     {
         keyFound = false;
     }
+
+    void Update()
+    {
+        if (keyFound == true)
+        {
+            locked = false;
+        }
+        if (Input.GetKeyDown(KeyCode.E) && isInRange)
+        {
+            door_closed.SetActive(false);
+            door_opened.SetActive(true);
+            intText.SetActive(false);
+            open.Play();
+            StartCoroutine(repeat());
+            opened = true;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("MainCamera")){
             if(opened == false){
                 if (locked == false){
                     intText.SetActive(true);
-                    if(Input.GetKeyDown(KeyCode.E)) {
-                        door_closed.SetActive(false);
-                        door_opened.SetActive(true);
-                        intText.SetActive(false);
-                        open.Play();
-                        StartCoroutine(repeat());
-                        opened = true;
-                    }
+                    isInRange = true;
                 }
                 if(locked == true) { 
                     lockedText.SetActive(true);
@@ -41,6 +53,7 @@ public class door : MonoBehaviour
         {
             intText.SetActive(false);
             lockedText.SetActive(false);
+            isInRange = false;
         }
     }
     IEnumerator repeat()
@@ -52,10 +65,5 @@ public class door : MonoBehaviour
         close.Play();
     }
 
-    void Update()
-    {
-        if(keyFound == true) { 
-            locked = false;
-        }
-    }
+   
 }
