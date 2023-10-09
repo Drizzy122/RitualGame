@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FlashLight : MonoBehaviour
 {
-    public Light light;
+    public Light lighting;
     public TMP_Text text;
     public TMP_Text batteryText;
     public float lifetime = 100;
@@ -16,10 +16,10 @@ public class FlashLight : MonoBehaviour
     private bool off;
     void Start()
     {
-        light = GetComponent<Light>();
+        lighting = GetComponent<Light>();
 
         off = true;
-        light.enabled = false;
+        lighting.enabled = false;
 
     }
     void Update()
@@ -30,7 +30,7 @@ public class FlashLight : MonoBehaviour
         if (Input.GetButtonDown("flashlight") && off)
         {
             flashON.Play();
-            light.enabled = true;
+            lighting.enabled = true;
             on = true;
             off = false;
         }
@@ -38,7 +38,7 @@ public class FlashLight : MonoBehaviour
         else if (Input.GetButtonDown("flashlight") && on)
         {
             flashOFF.Play();
-            light.enabled = false;
+            lighting.enabled = false;
             on = false;
             off = true;
         }
@@ -50,7 +50,7 @@ public class FlashLight : MonoBehaviour
 
         if (lifetime <= 0)
         {
-            light.enabled = false;
+            lighting.enabled = false;
             on = false;
             off = true;
             lifetime = 0;

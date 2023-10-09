@@ -23,6 +23,7 @@ public class door : MonoBehaviour
                         door_closed.SetActive(false);
                         door_opened.SetActive(true);
                         intText.SetActive(false);
+                        open.Play();
                         StartCoroutine(repeat());
                         opened = true;
                     }
@@ -48,6 +49,7 @@ public class door : MonoBehaviour
         opened = false;
         door_closed.SetActive(true) ;
         door_opened.SetActive(false) ;
+        close.Play();
     }
 
     void Update()
