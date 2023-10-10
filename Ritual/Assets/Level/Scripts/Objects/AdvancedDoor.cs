@@ -104,4 +104,5 @@ public class AdvancedDoor : MonoBehaviour
             lockOB.SetActive(false);
         }
     }
+
 }
