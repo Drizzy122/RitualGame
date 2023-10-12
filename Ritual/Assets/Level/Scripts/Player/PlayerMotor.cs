@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Playables;
 
 public class PlayerMotor : MonoBehaviour
 {
     [Header("Player Movement")]
     bool sprinting = false;
+    public Image staminaBar;
     public float gravity = -9.8f;
     private bool isGrounded;
     private Vector3 playerVelocity;
     public float speed = 5f;
+    public float stamina = 100;
     public float jumpHeight = 3f;
     bool crouching = false;
     float crouchTimer = 1;
@@ -27,6 +30,9 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
+        stamina = Mathf.Clamp(stamina, 0, 100);
+        staminaBar.fillAmount = Mathf.Clamp(stamina / 100, 0, 1f);
+
         isGrounded = controller.isGrounded;
         if (lerpCrouch)
         {
@@ -43,6 +49,18 @@ public class PlayerMotor : MonoBehaviour
                 lerpCrouch = false;
                 crouchTimer = 0f;
             }
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if(sprinting)
+        {
+            stamina -= 1;
+        }
+        else
+        {
+            stamina += 0.1f;
         }
     }
 
@@ -89,14 +107,16 @@ public class PlayerMotor : MonoBehaviour
     public void Sprint()
     {
         sprinting = !sprinting;
-        if (sprinting)
+        if (sprinting && stamina >= 0)
         {
             speed = 8;
+            
             footStepSound.pitch = 1.5f; // Adjust pitch for sprinting
         }
         else
         {
             speed = 5;
+            
             footStepSound.pitch = 1.0f; // Reset pitch to normal when not sprinting
         }
     }
