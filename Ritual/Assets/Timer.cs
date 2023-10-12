@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
 
         currentTime -= Time.deltaTime;
 
-        currentTime = Mathf.Clamp(currentTime, 0, totalTime);
+        currentTime = Mathf.Clamp(currentTime, 0, totalTimeinSeconds);
 
         int minutes = Mathf.FloorToInt(currentTime / 60F);
         int seconds = Mathf.FloorToInt(currentTime % 60F);
