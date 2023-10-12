@@ -15,13 +15,13 @@ public class FlashLight : MonoBehaviour
     public float batteries = 0;
     public AudioSource flashON;
     public AudioSource flashOFF;
-    private bool on;
-    private bool off;
+    public bool on;
+    //public bool off;
     void Start()
     {
         lighting = GetComponent<Light>();
 
-        off = true;
+        on = false;
         lighting.enabled = false;
 
     }
@@ -32,12 +32,12 @@ public class FlashLight : MonoBehaviour
         text.text = lifetime.ToString("0") + "%";
         batteryText.text = batteries.ToString();
 
-        if (Input.GetButtonDown("flashlight") && off)
+        if (Input.GetButtonDown("flashlight") && !on)
         {
             flashON.Play();
             lighting.enabled = true;
             on = true;
-            off = false;
+            //off = false;
         }
 
         else if (Input.GetButtonDown("flashlight") && on)
@@ -45,7 +45,7 @@ public class FlashLight : MonoBehaviour
             flashOFF.Play();
             lighting.enabled = false;
             on = false;
-            off = true;
+            //off = true;
         }
 
         if (on)
@@ -57,11 +57,11 @@ public class FlashLight : MonoBehaviour
         {
             lighting.enabled = false;
             on = false;
-            off = true;
+            //off = true;
             lifetime = 0;
         }
 
-        if(lifetime == 0)
+        if (lifetime == 0)
         {
             barColor = Color.green;
         }
@@ -70,13 +70,13 @@ public class FlashLight : MonoBehaviour
         {
             lifetime = 100;
         }
-        
 
-        if(lifetime >= 50f)
+
+        if (lifetime >= 50f)
         {
             barColor.r = 2 - (2 * lifetime) / 100;
         }
-        else if(lifetime >0)
+        else if (lifetime > 0)
         {
             barColor.g = 2 * lifetime / 100;
         }

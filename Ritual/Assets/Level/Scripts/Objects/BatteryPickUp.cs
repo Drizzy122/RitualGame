@@ -7,7 +7,7 @@ public class BatteryPickUp : MonoBehaviour
     private bool inReach;
 
     public GameObject pickUpText;
-    private GameObject flashlight;
+    public GameObject flashlight;
 
     public AudioSource pickUpSound;
 
@@ -15,7 +15,7 @@ public class BatteryPickUp : MonoBehaviour
     {
         inReach = false;
         pickUpText.SetActive(false);
-        flashlight = GameObject.Find("flashlight");
+        //flashlight = GameObject.Find("flashlight");
     }
 
     void OnTriggerEnter(Collider other)
