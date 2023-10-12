@@ -5,7 +5,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float totalTime = 60.0f;
+    public float totalTimeinSeconds = 60.0f;
     public float currentTime;
 
     public TMP_Text timer;
@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
 
     public void Start()
     {
-        currentTime = totalTime;
+        currentTime = totalTimeinSeconds;
     }
     public void Update()
     {
