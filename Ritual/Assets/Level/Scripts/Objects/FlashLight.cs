@@ -50,7 +50,7 @@ public class FlashLight : MonoBehaviour
 
         if (on)
         {
-            lifetime -= 1 * Time.deltaTime;
+            lifetime -= 2 * Time.deltaTime;
         }
 
         if (lifetime <= 0)

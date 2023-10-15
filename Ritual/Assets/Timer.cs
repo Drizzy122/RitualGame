@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float totalTimeinSeconds = 60.0f;
     public float currentTime;
-
+    public string sceneName;
     public TMP_Text timer;
 
 
@@ -37,8 +38,9 @@ public class Timer : MonoBehaviour
 
     void timerEnded()
     {
-        Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        SceneManager.LoadScene(sceneName);
+        //Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
 
