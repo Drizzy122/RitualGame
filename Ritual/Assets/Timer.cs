@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
 
     void timerEnded()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("JumpScare");
         //Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }

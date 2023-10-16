@@ -13,11 +13,13 @@ public class pills : MonoBehaviour
     public AudioSource pickUpSound; 
     public string sceneName;
 
+    public GameObject Granny;
+
     void Start()
     {
         inReach = false;
         pickUpText.SetActive(false);
-   
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,20 +42,25 @@ public class pills : MonoBehaviour
     }
     void Update()
     {
+        Granny = GameObject.FindWithTag("Granny");
         if (Input.GetButtonDown("Interact") && inReach)
         {
-            GetComponent<monsterChase>().enabled = false;
+            Granny.GetComponent<monsterChase>().Pills = true;
             // Disable the specific BoxCollider
             if (specificCollider != null)
             {
                 specificCollider.enabled = false;
             }
-            SceneManager.LoadScene(sceneName);
+            Invoke(nameof(EndScene),1f);
             pickUpSound.Play();
             inReach = false;
             pickUpText.SetActive(false);
             Destroy(gameObject);
         }
 
+    }
+    private void EndScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &22879594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19280,6 +19280,7 @@ MonoBehaviour:
   specificCollider: {fileID: 773524726}
   pickUpSound: {fileID: 4491903276265183539}
   sceneName: MainMenu
+  Granny: {fileID: 773524723}
 --- !u!65 &760574980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19518,6 +19519,7 @@ MonoBehaviour:
   monsRigid: {fileID: 773524724}
   monsTrans: {fileID: 773524727}
   playTrans: {fileID: 1512068491683075468}
+  Pills: 0
   monSpeed: 200
 --- !u!136 &773524726
 CapsuleCollider:
@@ -21805,7 +21807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d821cbed8fb06fc428fc362480732b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTimeinSeconds: 250
+  totalTimeinSeconds: 50000
   currentTime: 0
   sceneName: JumpScare
   timer: {fileID: 939772997}
@@ -46691,6 +46693,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: acc3e67bef08dc54f9f3d1df5eaf9d7b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acc3e67bef08dc54f9f3d1df5eaf9d7b, type: 3}
+      propertyPath: m_TagString
+      value: Granny
       objectReference: {fileID: 0}
     - target: {fileID: 994897910335487549, guid: acc3e67bef08dc54f9f3d1df5eaf9d7b, type: 3}
       propertyPath: m_Layer

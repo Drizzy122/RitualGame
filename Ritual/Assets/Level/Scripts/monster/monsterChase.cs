@@ -7,11 +7,16 @@ public class monsterChase : MonoBehaviour
 {
     public Rigidbody monsRigid;
     public Transform monsTrans, playTrans;
+    public bool Pills = false;
     public int monSpeed;
 
     void FixedUpdate()
     {
-        monsRigid.velocity = transform.forward * monSpeed * Time.deltaTime;
+        if (!Pills)
+        {
+
+            monsRigid.velocity = transform.forward * monSpeed * Time.deltaTime;
+        }
     }
 
     private void Update()
