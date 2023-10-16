@@ -51,7 +51,8 @@ public class pills : MonoBehaviour
             {
                 specificCollider.enabled = false;
             }
-            Invoke(nameof(EndScene),1f);
+            //Invoke(nameof(MainMenu),1f);
+            SceneManager.LoadScene(sceneName);
             pickUpSound.Play();
             inReach = false;
             pickUpText.SetActive(false);
@@ -59,8 +60,9 @@ public class pills : MonoBehaviour
         }
 
     }
-    private void EndScene()
+   /*private void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
+   */
 }
